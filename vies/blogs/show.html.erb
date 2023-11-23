@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<h1>
+	Blog Posting
+</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @blog.description %>
+</p>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %>
+<%= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', blogs_path %>
+<hr>
+<h3>
+	Comments
+</h3>
+	<% @blog.comments.each_with_index do |comment, index| %>  
+	  <div>
+		  <p>
+			  <span><%= index+1 %>.</span>
+					<%= comment.comment %>
+			  <span>
+				  <%= link_to 'Comment Destroy', [comment.blog, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+			  </span>
+		  </p>
+		  
+	  </div>
+
+    <% end %>
+
+
+<hr>
+<h3>
+	Write Comment
+</h3>
+<%= render 'comments/form' %>
