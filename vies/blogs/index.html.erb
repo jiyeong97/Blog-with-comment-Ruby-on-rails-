@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Blogs</h1>
+
+  <tbody>
+    <% @blogs.each_with_index do |blog, index| %>  
+	  <div>
+		  <h2>
+			  <span><%= index+1 %>.</span>
+				<%= link_to(blog) do %>
+					<%= blog.title %>
+				<% end %>
+		  </h2>
+		  
+	  </div>
+	<hr>
+
+    <% end %>
+  </tbody>
+<br>
+
+<%= link_to 'New Blog', new_blog_path %>
+
+<!-- view helper
+blog_path = /blogs
+blog_path(:id) = /blogs/:id
+new_blog_path = /blogs/new
+edit_blog_path(:id) = /blogs/:id/edit
+-->
